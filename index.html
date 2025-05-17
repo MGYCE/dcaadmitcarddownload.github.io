@@ -52,7 +52,7 @@
 
 <script>
   const studentDatabase = {
-    "1001": { name: "Amit Sharma", class: "10th", exam: "Final Exam 2025", center: "Delhi Public School" },
+    "1001": { name: "Amit Sharma", course: "DCA", exam: "Final Exam 2025", center: "Digital Computer Academy" },
     "1002": { name: "Neha Singh", class: "12th", exam: "Board Exam 2025", center: "St. Xavier's School" },
     "1003": { name: "Rahul Verma", class: "11th", exam: "Mid Term Exam", center: "Modern School" }
   };
@@ -65,7 +65,7 @@
       document.getElementById('cardDetails').innerHTML = `
         <strong>Roll Number:</strong> ${roll}<br>
         <strong>Name:</strong> ${details.name}<br>
-        <strong>Class:</strong> ${details.class}<br>
+        <strong>Course:</strong> ${details.course}<br>
         <strong>Exam:</strong> ${details.exam}<br>
         <strong>Exam Center:</strong> ${details.center}<br>
       `;
