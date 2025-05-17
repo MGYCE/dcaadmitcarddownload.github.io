@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admit Card Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    .form-box, .admit-card {
+      background: white;
+      padding: 20px;
+      margin: auto;
+      width: 400px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      border-radius: 10px;
+    }
+    .admit-card {
+      display: none;
+    }
+    .admit-card h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .details {
+      line-height: 1.8;
+    }
+    button {
+      margin-top: 10px;
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="form-box">
+  <h2>Enter Roll Number</h2>
+  <input type="text" id="rollInput" placeholder="Enter Roll Number" style="width:100%;padding:10px;">
+  <button onclick="generateAdmitCard()">Get Admit Card</button>
+</div>
+
+<div class="admit-card" id="admitCard">
+  <h2>Admit Card</h2>
+  <div class="details" id="cardDetails">
+    <!-- Auto-filled content goes here -->
+  </div>
+  <button onclick="window.print()">Print Admit Card</button>
+</div>
+
+<script>
+  const studentDatabase = {
+    "1001": { name: "Amit Sharma", class: "10th", exam: "Final Exam 2025", center: "Delhi Public School" },
+    "1002": { name: "Neha Singh", class: "12th", exam: "Board Exam 2025", center: "St. Xavier's School" },
+    "1003": { name: "Rahul Verma", class: "11th", exam: "Mid Term Exam", center: "Modern School" }
+  };
+
+  function generateAdmitCard() {
+    const roll = document.getElementById('rollInput').value.trim();
+    const details = studentDatabase[roll];
+
+    if (details) {
+      document.getElementById('cardDetails').innerHTML = `
+        <strong>Roll Number:</strong> ${roll}<br>
+        <strong>Name:</strong> ${details.name}<br>
+        <strong>Class:</strong> ${details.class}<br>
+        <strong>Exam:</strong> ${details.exam}<br>
+        <strong>Exam Center:</strong> ${details.center}<br>
+      `;
+      document.getElementById('admitCard').style.display = 'block';
+    } else {
+      alert("Roll number not found!");
+      document.getElementById('admitCard').style.display = 'none';
+    }
+  }
+</script>
+
+</body>
+</html>
